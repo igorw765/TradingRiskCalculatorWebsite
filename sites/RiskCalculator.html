@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Risk Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/risk-calculator.css">
+  </head>
+  <body>
+    <h1>Risk Calculator</h1>
+    <div id="calculator">
+      <div>
+        <label for="value">Value:</label>
+        <input type="text" id="value" />
+      </div>
+      <div>
+        <label for="percentage">Percentage:</label>
+        <input type="text" id="percentage" />
+      </div>
+      <button id="calculate">Calculate</button>
+      <div id="result"></div>
+    </div>
+    <script>
+      $(document).ready(function() {
+        $("#calculate").click(function() {
+          try {
+            let value = parseFloat($("#value").val());
+            let percentage = parseFloat($("#percentage").val());
+            let result = (percentage / 100) * value;
+            $("#result").text("Risk: " + result.toFixed(2) + "$");
+          } catch (ex) {
+            console.log(ex);
+            $("#result").text("Error!");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+
